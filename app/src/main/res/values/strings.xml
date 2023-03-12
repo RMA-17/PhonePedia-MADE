@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">PhonePedia</string>
+    <string name="product_date">Released: %1$s</string>
+    <string name="product_design">Height: %1$s \nWidth: %2$s \nWeight: %3$s \nThickness: %4$s \nIP Rating: %5$s \nColor: %6$s \n
+    </string>
+    <string name="product_display">Resolution: %1$s \nRefresh Rate: %2$s \nPixel Density: %3$s
+    </string>
+    <string name="product_camera">Back Camera: %1$s \nFront Camera: %2$s \n
+    </string>
+    <string name="product_specs">OS: %1$s \nProcessor: %2$s \nRAM: %3$s \nStorage: %4$s \n
+    </string>
+    <string name="txt_loading">Loading…</string>
+    <string name="title_favorite">Favorites</string>
+    <string name="txt_smartphones">Smartphones</string>
+    <string name="txt_tablets">Tablets</string>
+    <string name="txt_laptops">Laptops</string>
+    <string name="txt_smartwatches">Smartwatches</string>
+    <string name="txt_query_empty">Please fill the searchbox first</string>
+    <string name="txt_search_product">Search product…</string>
+    <string name="txt_dark_mode">Dark mode</string>
+</resources>

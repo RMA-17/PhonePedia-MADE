@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:fitsSystemWindows="true"
+            app:expandedTitleTextColor="@android:color/transparent"
+            app:contentScrim="?colorPrimaryContainer"
+            app:titleTextEllipsize="end"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_product_model"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                style="toolbar"
+                app:navigationIcon="@drawable/baseline_arrow_back_ios_new_24"
+                app:layout_collapseMode="pin"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:layout_height="match_parent"
+        android:contentDescription="Detail Content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:layout_height="match_parent">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/product_info"
+                android:layout_width="wrap_content"
+                tools:text="Hello World"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/product_date"
+                android:layout_width="wrap_content"
+                tools:text="Hello World"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_marginTop="12dp"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:id="@+id/container_specs"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt_err"
+                    android:layout_width="match_parent"
+                    android:layout_marginVertical="16dp"
+                    android:visibility="gone"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                    android:text="Cannot load device info"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/exp_design"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:text="Design"
+                    android:background="?selectableItemBackground"
+                    app:drawableEndCompat="@drawable/baseline_keyboard_arrow_down_24"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                    android:layout_height="wrap_content"/>
+
+                <net.cachapa.expandablelayout.ExpandableLayout
+                    android:id="@+id/exp_design_layout"
+                    android:layout_width="match_parent"
+                    app:el_expanded="false"
+                    app:el_duration="300"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt_design"
+                        android:layout_width="match_parent"
+                        android:text="Hello World"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:layout_height="wrap_content"/>
+
+                </net.cachapa.expandablelayout.ExpandableLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/exp_display"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="16dp"
+                    android:text="Display"
+                    android:background="?selectableItemBackground"
+                    app:drawableEndCompat="@drawable/baseline_keyboard_arrow_down_24"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                    android:layout_height="wrap_content"/>
+
+                <net.cachapa.expandablelayout.ExpandableLayout
+                    android:id="@+id/exp_display_layout"
+                    android:layout_width="match_parent"
+                    app:el_expanded="false"
+                    app:el_duration="300"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt_display"
+                        android:layout_width="match_parent"
+                        android:text="Hello World"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:layout_height="wrap_content"/>
+
+                </net.cachapa.expandablelayout.ExpandableLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/exp_camera"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:background="?selectableItemBackground"
+                    app:drawableEndCompat="@drawable/baseline_keyboard_arrow_down_24"
+                    android:text="Camera"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                    android:layout_height="wrap_content"/>
+
+                <net.cachapa.expandablelayout.ExpandableLayout
+                    android:id="@+id/exp_camera_layout"
+                    android:layout_width="match_parent"
+                    app:el_expanded="false"
+                    app:el_duration="300"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt_camera"
+                        android:layout_width="match_parent"
+                        android:text="Hello World"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:layout_height="wrap_content"/>
+
+                </net.cachapa.expandablelayout.ExpandableLayout>
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/exp_specs"
+                    android:layout_marginTop="16dp"
+                    android:layout_width="match_parent"
+                    android:text="Specs"
+                    android:background="?selectableItemBackground"
+                    app:drawableEndCompat="@drawable/baseline_keyboard_arrow_down_24"
+                    android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                    android:layout_height="wrap_content"/>
+
+                <net.cachapa.expandablelayout.ExpandableLayout
+                    android:id="@+id/exp_specs_layout"
+                    android:layout_width="match_parent"
+                    app:el_expanded="false"
+                    app:el_duration="300"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt_specs"
+                        android:layout_width="match_parent"
+                        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                        android:text="Hello World"
+                        android:layout_height="wrap_content"/>
+
+                </net.cachapa.expandablelayout.ExpandableLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Add to favorite"
+        android:src="@drawable/baseline_favorite_border_24"
+        app:layout_behavior="com.google.android.material.floatingactionbutton.FloatingActionButton$Behavior" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

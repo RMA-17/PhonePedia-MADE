@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.rmaprojects.phonepedia.presentation.home.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="Home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_detail"
+            app:destination="@id/nav_detail" />
+        <action
+            android:id="@+id/action_nav_home_to_nav_search"
+            app:destination="@id/nav_search" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="com.rmaprojects.phonepedia.presentation.details.DetailsFragment"
+        android:label="Detail" />
+
+    <include-dynamic
+        android:id="@+id/favoriteGraph"
+        app:moduleName="favorite"
+        app:graphResName="favorite_graph"
+        >
+        <action
+            android:id="@+id/action_favoriteGraph_to_nav_detail"
+            app:destination="@id/nav_detail" />
+    </include-dynamic>
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.rmaprojects.phonepedia.presentation.search.SearchFragment"
+        android:label="Search" >
+        <action
+            android:id="@+id/action_nav_search_to_nav_detail"
+            app:destination="@id/nav_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.rmaprojects.phonepedia.presentation.settings.SettingsFragment"
+        android:label="SettingsFragment" />
+</navigation>
