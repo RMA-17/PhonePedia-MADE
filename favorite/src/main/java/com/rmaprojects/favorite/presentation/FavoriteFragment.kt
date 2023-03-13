@@ -49,8 +49,10 @@ class FavoriteFragment: Fragment(R.layout.fragment_favorite) {
         viewModel.favProductList.observe(viewLifecycleOwner) { favList ->
             if (favList.isNullOrEmpty()) {
                 binding.txtEmptyFav.isVisible = true
+                binding.emptyIcon.isVisible = true
                 return@observe
             }
+            binding.emptyIcon.isVisible = false
             binding.txtEmptyFav.isVisible = false
             binding.rvFavoriteList.adapter = ProductListAdapter(favList) { favorite ->
                 val bundle = bundleOf(DetailsFragment.PRODUCT_ID to favorite.productId)

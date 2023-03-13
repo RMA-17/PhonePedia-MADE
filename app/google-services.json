@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "851818542922",
+    "project_id": "phonepedia-e7b1c",
+    "storage_bucket": "phonepedia-e7b1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:851818542922:android:fc6e7792119b4aae4633b3",
+        "android_client_info": {
+          "package_name": "com.rmaprojects.phonepedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "851818542922-41uk7k9m6ug6ointfj16ts83pl9s84je.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzr04RzCePxGRmOqt9tQF8czlDMCLvFjE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "851818542922-41uk7k9m6ug6ointfj16ts83pl9s84je.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
