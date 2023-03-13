@@ -30,6 +30,9 @@ jobs:
       - run:
           name: Run Tests
           command: ./gradlew lint test
+      - run:
+          name: Unit Test
+          command: ./gradlew testDebug  
       - store_test_results:
           path: app/build/test-results
       - store_artifacts:  
