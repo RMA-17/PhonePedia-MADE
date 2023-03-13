@@ -2,7 +2,6 @@ package com.rmaprojects.core.domain.repository
 
 import com.rmaprojects.core.data.source.remote.response.ResponseStatus
 import com.rmaprojects.core.domain.model.CategoryEntity
-import com.rmaprojects.core.data.source.local.entity.FavoriteEntity
 import com.rmaprojects.core.domain.model.Favorite
 import com.rmaprojects.core.domain.model.ProductItemDetail
 import com.rmaprojects.core.domain.model.ProductItemList

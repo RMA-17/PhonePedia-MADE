@@ -23,7 +23,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -47,6 +51,9 @@ dependencies {
 
     //Navigation Dynamic-Feature
     implementation 'androidx.navigation:navigation-dynamic-features-fragment:2.5.3'
+
+    //LeakCanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 
     implementation project(":core")
 }

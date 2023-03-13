@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         setSupportActionBar(binding.topAppBar)
 
         navController.addOnDestinationChangedListener { _, destination ,_ ->
-            var isTopBarVisible = true
-            var topBarTitle = ""
+            val isTopBarVisible: Boolean
+            val topBarTitle: String
             when (destination.id) {
                 R.id.nav_home -> {
                     isTopBarVisible = true

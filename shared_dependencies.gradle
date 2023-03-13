@@ -29,4 +29,10 @@ dependencies {
     implementation 'com.chibatching.kotpref:kotpref:2.13.1'
     implementation 'com.chibatching.kotpref:initializer:2.13.1'
     implementation 'com.chibatching.kotpref:enum-support:2.13.1'
+
+    //Shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+
+    //Lottie
+    implementation 'com.airbnb.android:lottie:6.0.0'
 }

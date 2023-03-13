@@ -6,6 +6,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -20,6 +21,13 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
+
+        val hostName = "api.techspecs.io"
+
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostName, "sha256/BtEMFh7X1h+DCRPq+y9a5RTEK81JnwkLAsIc8o4JmG8=")
+            .build()
+
         val httpClient = OkHttpClient.Builder()
             .apply {
                 if (BuildConfig.DEBUG) {
@@ -31,6 +39,7 @@ class NetworkModule {
             }
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
+            .certificatePinner(certificatePinner)
             .addInterceptor { chain ->
                 val request = chain.request().newBuilder().addHeader(
                     "Authorization",

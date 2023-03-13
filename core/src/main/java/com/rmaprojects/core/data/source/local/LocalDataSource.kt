@@ -2,7 +2,6 @@ package com.rmaprojects.core.data.source.local
 
 import com.rmaprojects.core.data.source.local.database.FavoriteDatabase
 import com.rmaprojects.core.data.source.local.entity.FavoriteEntity
-import com.rmaprojects.core.domain.model.Favorite
 import com.rmaprojects.core.domain.model.ProductItemDetail
 import com.rmaprojects.core.utils.mapIntoFavorite
 import kotlinx.coroutines.flow.Flow
