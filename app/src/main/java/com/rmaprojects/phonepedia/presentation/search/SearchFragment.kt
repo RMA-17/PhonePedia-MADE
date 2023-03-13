@@ -36,8 +36,8 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
                 is SearchUiEvent.Error -> {
                     isLoading = false
                     isMessageShown = true
-                    binding.txtEventMessage.text = event.message
-                    triggerSnackbar(binding.root, event.message).show()
+                    binding.txtEventMessage.text = getString(R.string.txt_product_not_found)
+                    triggerSnackbar(binding.root, getString(R.string.txt_product_not_found)).show()
                 }
                 is SearchUiEvent.Loading -> {
                     isLoading = true
@@ -63,7 +63,7 @@ class SearchFragment: Fragment(R.layout.fragment_search) {
                 }
             }
             binding.progressCircular.isVisible = isLoading
-            binding.rvListProduct.isVisible = !isLoading
+            binding.rvListProduct.isVisible = !isLoading && !isMessageShown
             binding.txtEventMessage.isVisible = isMessageShown
         }
 
