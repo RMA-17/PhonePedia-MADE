@@ -18,7 +18,7 @@ interface ApiService {
     @POST("/v4/all/products")
     suspend fun getAllProducts(
         @Query("page") page: Int = 1,
-        @Body brand: Array<String>? = arrayOf(),
+        @Body brand: Brands = Brands()
     ): ProductsResponse
 
     @GET("/v4/product/detail")
@@ -32,4 +32,8 @@ interface ApiService {
 
 data class Category(
     val category: String
+)
+
+data class Brands(
+    val brand: List<String> = listOf("Samsung"),
 )

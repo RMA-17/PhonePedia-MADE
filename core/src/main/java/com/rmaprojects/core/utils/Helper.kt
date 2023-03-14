@@ -1,6 +1,5 @@
 package com.rmaprojects.core.utils
 
-import androidx.annotation.VisibleForTesting
 import com.rmaprojects.core.data.source.local.entity.FavoriteEntity
 import com.rmaprojects.core.domain.model.Favorite
 import com.rmaprojects.core.domain.model.ProductItemDetail
@@ -8,13 +7,12 @@ import com.rmaprojects.core.domain.model.ProductItemList
 import com.rmaprojects.core.data.source.remote.response.all_products.Item as DataProductList
 import com.rmaprojects.core.data.source.remote.response.product_detail.Item as DataProductDetail
 
-@VisibleForTesting
 fun ProductItemDetail.mapIntoFavorite(): FavoriteEntity {
     return FavoriteEntity(
-        this.productId,
-        this.productCategory,
-        this.productImages.first(),
-        this.productModel
+        id = this.productId,
+        productCategory = this.productCategory,
+        productImage = this.productImages.first(),
+        productName = this.productModel
     )
 }
 
@@ -41,7 +39,7 @@ fun DataProductList.mapIntoEntity(): ProductItemList {
     return ProductItemList(
         productId = this.product.id,
         productModel = this.product.model,
-        image = this.image.front,
+        image = this.image?.front ?: "",
         category = this.product.category
     )
 }

@@ -37,7 +37,7 @@ class DetailViewModel @Inject constructor (
 
     private fun checkIfAdded() {
         viewModelScope.launch {
-            _isProductInserted.value = useCases.validateIsFavoriteUseCase(_productId)
+            _isProductInserted.emit(useCases.validateIsFavoriteUseCase(_productId))
         }
     }
 
@@ -53,8 +53,8 @@ class DetailViewModel @Inject constructor (
                             product.productModel
                         )
                     )
-                    checkIfAdded()
                     _uiEventFlow.emit(DetailProductUiEvent.DeletedFromFavorite)
+                    checkIfAdded()
                     return@launch
                 }
                 useCases.insertFavoriteUseCase(product)

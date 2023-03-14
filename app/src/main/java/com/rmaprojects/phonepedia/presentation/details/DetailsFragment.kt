@@ -43,7 +43,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                         binding.root,
                         "Deleted from favorite"
                     ).show()
-                    binding.fabFavorite.setImageResource(R.drawable.baseline_favorite_border_24)
                 }
                 is DetailProductUiEvent.Error -> {
                     triggerSnackbar(
@@ -56,7 +55,6 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                         binding.root,
                         "Saved to favorite"
                     ).show()
-                    binding.fabFavorite.setImageResource(R.drawable.baseline_favorite_24)
                 }
             }
         }

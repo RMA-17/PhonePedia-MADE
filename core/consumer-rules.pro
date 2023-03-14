@@ -88,6 +88,8 @@
     public static ** bind( ** );
 }
 
+-keep class com.rmaprojects.phonepedia.presentation.home.*
+
 ##---------------End: proguard configuration for ViewBinding  ----------
 
 -keep class kotlin.LazyKt
