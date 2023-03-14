@@ -136,7 +136,9 @@ class PhonePediaRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getFavoriteDetails(productId: String): Favorite? {
-        return localDataSource.getProductDetail(productId)?.asFavorite()
+    override fun getFavoriteDetails(productId: String): Flow<Favorite?> {
+        return localDataSource.getProductDetail(productId).map {
+            it?.asFavorite()
+        }
     }
 }

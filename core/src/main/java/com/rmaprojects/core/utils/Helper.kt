@@ -9,7 +9,7 @@ import com.rmaprojects.core.data.source.remote.response.product_detail.Item as D
 
 fun ProductItemDetail.mapIntoFavorite(): FavoriteEntity {
     return FavoriteEntity(
-        id = this.productId,
+        productId = this.productId,
         productCategory = this.productCategory,
         productImage = this.productImages.first(),
         productName = this.productModel
@@ -25,12 +25,17 @@ fun Favorite.asFavoriteEntity(): FavoriteEntity {
     )
 }
 
-fun FavoriteEntity.asFavorite(): Favorite {
-    return Favorite(
-        this.id,
+fun FavoriteEntity?.asFavorite(): Favorite {
+    return if (this != null) Favorite(
+        this.productId,
         this.productCategory,
         this.productImage,
         this.productName
+    ) else Favorite(
+        "",
+        null,
+        null,
+        null
     )
 }
 

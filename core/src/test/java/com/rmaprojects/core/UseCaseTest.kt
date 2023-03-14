@@ -95,7 +95,7 @@ class UseCaseTest {
         val product = DummyData.generateDummyItemDetail()
         val expectedBoolean = MutableLiveData<Boolean>()
         expectedBoolean.value = false
-        val actualBoolean = fakeUseCase.validateIsFavoriteUseCase(product.productId)
+        val actualBoolean = fakeUseCase.getFavoriteById(product.productId)
         assertEquals(
             expectedBoolean.value,
             actualBoolean
@@ -110,7 +110,7 @@ class UseCaseTest {
         )
         val expectedBooleanAfter = MutableLiveData<Boolean>()
         expectedBooleanAfter.value = true
-        val actualBooleanAfter = fakeUseCase.validateIsFavoriteUseCase(product.productId)
+        val actualBooleanAfter = fakeUseCase.getFavoriteById(product.productId)
         assertEquals(
             expectedBooleanAfter.value,
             actualBooleanAfter

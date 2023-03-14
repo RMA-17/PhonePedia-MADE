@@ -15,5 +15,5 @@ interface PhonePediaUseCases {
     fun getFavoriteUseCase(): Flow<List<Favorite>>
     suspend fun deleteFavoriteUseCase(favorite: Favorite)
     suspend fun insertFavoriteUseCase(product: ProductItemDetail)
-    suspend fun validateIsFavoriteUseCase(productId: String): Boolean
+    fun getFavoriteById(productId: String): Flow<Favorite?>
 }

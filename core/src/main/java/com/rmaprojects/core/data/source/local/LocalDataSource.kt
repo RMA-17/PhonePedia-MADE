@@ -24,7 +24,7 @@ class LocalDataSource @Inject constructor(
         return database.favDao().getAllFavorite()
     }
 
-    suspend fun getProductDetail(productId: String): FavoriteEntity? {
+    fun getProductDetail(productId: String): Flow<FavoriteEntity?> {
         return database.favDao().getFavProductDetail(productId)
     }
 }

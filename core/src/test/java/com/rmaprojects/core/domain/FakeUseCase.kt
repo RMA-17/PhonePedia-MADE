@@ -62,7 +62,7 @@ class FakeUseCase: PhonePediaUseCases {
         favoriteItemList.add(mappedProduct.asFavorite())
     }
 
-    override suspend fun validateIsFavoriteUseCase(productId: String): Boolean {
+    override suspend fun getFavoriteById(productId: String): Boolean {
         return favoriteItemList.any { it.productId == productId }
     }
 }

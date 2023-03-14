@@ -75,14 +75,16 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
                 }
                 is ResponseStatus.Success -> {
                     setLoading(false)
+                    viewModel.checkIfAdded(status.data)
                     binding.viewPager.adapter =
                         ProductDetailViewPagerAdapter(status.data.productImages)
                     setProductDetailText(status.data)
-                    setExpandable()
+                    binding.toolbarProductModel.title = status.data.productModel
                     binding.fabFavorite.setOnClickListener {
                         viewModel.addToFavorite(status.data)
+                        viewModel.checkIfAdded(status.data)
                     }
-                    binding.toolbarProductModel.title = status.data.productModel
+                    setExpandable()
                 }
             }
         }

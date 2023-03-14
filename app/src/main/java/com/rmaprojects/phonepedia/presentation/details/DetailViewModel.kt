@@ -11,6 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -31,13 +32,13 @@ class DetailViewModel @Inject constructor (
         return useCases.getProductDetailUseCase(_productId).asLiveData()
     }
 
-    init {
-        checkIfAdded()
-    }
-
-    private fun checkIfAdded() {
+    fun checkIfAdded(product: ProductItemDetail) {
         viewModelScope.launch {
-            _isProductInserted.emit(useCases.validateIsFavoriteUseCase(_productId))
+            useCases.getFavoriteById(product.productId).collectLatest { favorite ->
+                _isProductInserted.emit(favorite?.productId == product.productId)
+                Log.e("FAVORITE_PRODUCT_ID", favorite?.productId ?: "")
+                Log.e("CURRENT_PRODUCT_ID", _productId)
+            }
         }
     }
 
@@ -54,12 +55,12 @@ class DetailViewModel @Inject constructor (
                         )
                     )
                     _uiEventFlow.emit(DetailProductUiEvent.DeletedFromFavorite)
-                    checkIfAdded()
+                    checkIfAdded(product)
                     return@launch
                 }
                 useCases.insertFavoriteUseCase(product)
                 _uiEventFlow.emit(DetailProductUiEvent.SavedToFavorite)
-                checkIfAdded()
+                checkIfAdded(product)
             }
         } catch (e: Exception) {
             Log.d("ADD_FAVORITE", e.toString())

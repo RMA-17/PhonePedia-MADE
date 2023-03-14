@@ -15,5 +15,5 @@ interface PhonePediaRepository {
     suspend fun insertFavorite(product: ProductItemDetail)
     suspend fun deleteFavorite(favorite: Favorite)
     fun getAllFavorites(): Flow<List<Favorite>>
-    suspend fun getFavoriteDetails(productId: String): Favorite?
+    fun getFavoriteDetails(productId: String): Flow<Favorite?>
 }

@@ -44,8 +44,7 @@ class PhonePediaInteractor @Inject constructor(
         repository.insertFavorite(product)
     }
 
-    override suspend fun validateIsFavoriteUseCase(productId: String): Boolean {
-        val favId = repository.getFavoriteDetails(productId)?.productId ?: return false
-        return productId == favId
+    override fun getFavoriteById(productId: String): Flow<Favorite?> {
+        return repository.getFavoriteDetails(productId)
     }
 }
