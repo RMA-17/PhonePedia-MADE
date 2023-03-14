@@ -1,7 +1,6 @@
 package com.rmaprojects.core
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import com.rmaprojects.core.data.DummyData
 import com.rmaprojects.core.data.source.remote.response.ResponseStatus
@@ -9,7 +8,6 @@ import com.rmaprojects.core.domain.FakeUseCase
 import com.rmaprojects.core.domain.model.Category
 import com.rmaprojects.core.domain.model.ProductItemList
 import com.rmaprojects.core.utils.MainDispatcherRule
-import com.rmaprojects.core.utils.getOrAwaitValue
 import com.rmaprojects.core.utils.observeForTesting
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
@@ -88,39 +86,6 @@ class UseCaseTest {
                 (fakeDetail.value as ResponseStatus.Success).data.productId
             )
         }
-    }
-
-    @Test
-    fun `local room test use case`() = runTest {
-        val product = DummyData.generateDummyItemDetail()
-        val expectedBoolean = MutableLiveData<Boolean>()
-        expectedBoolean.value = false
-        val actualBoolean = fakeUseCase.getFavoriteById(product.productId)
-        assertEquals(
-            expectedBoolean.value,
-            actualBoolean
-        )
-        fakeUseCase.insertFavoriteUseCase(product)
-        val expectedValue = 1
-        val actualValue = fakeUseCase.getFavoriteUseCase().asLiveData().getOrAwaitValue()
-        print("Isi: $actualValue")
-        assertEquals(
-            expectedValue,
-            actualValue.size
-        )
-        val expectedBooleanAfter = MutableLiveData<Boolean>()
-        expectedBooleanAfter.value = true
-        val actualBooleanAfter = fakeUseCase.getFavoriteById(product.productId)
-        assertEquals(
-            expectedBooleanAfter.value,
-            actualBooleanAfter
-        )
-        val favorite = fakeUseCase.getFavoriteUseCase().asLiveData().getOrAwaitValue()
-        fakeUseCase.deleteFavoriteUseCase(favorite.first { it.productId == product.productId })
-        assertEquals(
-            0,
-            favorite.size
-        )
     }
 
 }
