@@ -6,7 +6,7 @@ import androidx.lifecycle.asLiveData
 import com.rmaprojects.core.data.DummyData
 import com.rmaprojects.core.data.source.remote.response.ResponseStatus
 import com.rmaprojects.core.domain.FakeUseCase
-import com.rmaprojects.core.domain.model.CategoryEntity
+import com.rmaprojects.core.domain.model.Category
 import com.rmaprojects.core.domain.model.ProductItemList
 import com.rmaprojects.core.utils.MainDispatcherRule
 import com.rmaprojects.core.utils.getOrAwaitValue
@@ -72,7 +72,7 @@ class UseCaseTest {
             assertNotNull(fakeCategories)
             assertEquals(
                 listOf("Smartphones", "Tablets", "Laptops"),
-                (fakeCategories.value as ResponseStatus.Success<CategoryEntity>).data.categories
+                (fakeCategories.value as ResponseStatus.Success<Category>).data.categories
             )
         }
     }

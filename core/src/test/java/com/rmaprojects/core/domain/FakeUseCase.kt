@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asFlow
 import com.rmaprojects.core.data.DummyData
 import com.rmaprojects.core.data.source.remote.response.ResponseStatus
-import com.rmaprojects.core.domain.model.CategoryEntity
+import com.rmaprojects.core.domain.model.Category
 import com.rmaprojects.core.domain.model.Favorite
 import com.rmaprojects.core.domain.model.ProductItemDetail
 import com.rmaprojects.core.domain.model.ProductItemList
@@ -35,9 +35,9 @@ class FakeUseCase: PhonePediaUseCases {
         }
     }
 
-    override fun getCategoriesUseCase(): Flow<ResponseStatus<CategoryEntity>> {
+    override fun getCategoriesUseCase(): Flow<ResponseStatus<Category>> {
         return flow {
-            emit(ResponseStatus.Success(CategoryEntity(listOf("Smartphones", "Tablets", "Laptops"))))
+            emit(ResponseStatus.Success(Category(listOf("Smartphones", "Tablets", "Laptops"))))
         }
     }
 

@@ -1,7 +1,7 @@
 package com.rmaprojects.core.domain.use_case
 
 import com.rmaprojects.core.data.source.remote.response.ResponseStatus
-import com.rmaprojects.core.domain.model.CategoryEntity
+import com.rmaprojects.core.domain.model.Category
 import com.rmaprojects.core.domain.model.Favorite
 import com.rmaprojects.core.domain.model.ProductItemDetail
 import com.rmaprojects.core.domain.model.ProductItemList
@@ -24,7 +24,7 @@ class PhonePediaInteractor @Inject constructor(
         return repository.searchProduct(query, category)
     }
 
-    override fun getCategoriesUseCase(): Flow<ResponseStatus<CategoryEntity>> {
+    override fun getCategoriesUseCase(): Flow<ResponseStatus<Category>> {
         return repository.getAllCategory()
     }
 

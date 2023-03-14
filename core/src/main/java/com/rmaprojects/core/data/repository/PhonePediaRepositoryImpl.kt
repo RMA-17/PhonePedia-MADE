@@ -3,9 +3,8 @@ package com.rmaprojects.core.data.repository
 import android.util.Log
 import com.rmaprojects.core.data.source.local.LocalDataSource
 import com.rmaprojects.core.data.source.remote.RemoteDataSource
-import com.rmaprojects.core.data.source.remote.network.Category
 import com.rmaprojects.core.data.source.remote.response.ResponseStatus
-import com.rmaprojects.core.domain.model.CategoryEntity
+import com.rmaprojects.core.domain.model.Category
 import com.rmaprojects.core.domain.model.Favorite
 import com.rmaprojects.core.domain.model.ProductItemDetail
 import com.rmaprojects.core.domain.model.ProductItemList
@@ -18,6 +17,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
+import com.rmaprojects.core.data.source.remote.network.Category as CategoryBody
 
 @Singleton
 class PhonePediaRepositoryImpl @Inject constructor(
@@ -45,7 +45,7 @@ class PhonePediaRepositoryImpl @Inject constructor(
         }
     }
 
-    override fun getAllCategory(): Flow<ResponseStatus<CategoryEntity>> {
+    override fun getAllCategory(): Flow<ResponseStatus<Category>> {
         return flow {
             emit(ResponseStatus.Loading)
             try {
@@ -59,9 +59,9 @@ class PhonePediaRepositoryImpl @Inject constructor(
                     it.name
                 }
 
-                val categoryEntity = CategoryEntity(categories)
+                val category = Category(categories)
 
-                emit(ResponseStatus.Success(categoryEntity))
+                emit(ResponseStatus.Success(category))
             } catch (e: Exception) {
                 Log.d("GET_CATEGORIES", e.toString())
                 emit(ResponseStatus.Error(e.message ?: "Error Occurred when retrieving data"))
@@ -76,7 +76,7 @@ class PhonePediaRepositoryImpl @Inject constructor(
         return flow {
             emit(ResponseStatus.Loading)
             try {
-                val categoryConvert = Category(category)
+                val categoryConvert = CategoryBody(category)
                 val response = remoteDataSource.searchProduct(
                     query = query,
                     category = categoryConvert
